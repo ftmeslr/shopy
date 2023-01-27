@@ -1,5 +1,6 @@
 import InnerLoginForm from "@/app/components/auth/innerLoginForm";
 import { LoginFormValuesInterface } from "@/app/contracts/auth";
+import callApi from "@/app/helpers/callApi";
 import { withFormik } from "formik";
 import * as yup from "yup";
 
@@ -17,8 +18,11 @@ const LoginForm = withFormik<LoginFormProps, LoginFormValuesInterface>({
     };
   },
   validationSchema: LoginFormVlidationSchema,
-  handleSubmit: (values) => {
-    console.log(values);
+  handleSubmit: async (values) => {
+    const res = await callApi().post("/auth/login", values);
+    if (res.status === 200) {
+      console.log(res.data.token);
+    }
   },
 })(InnerLoginForm);
 export default LoginForm;
