@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
 import LoginForm from "@/app/forms/auth/loginForm";
+import useCookies from "react-cookie/cjs/useCookies";
 
 const Login: NextPage = () => {
+  const [cookies , setCookie] = useCookies(['shopy-token'])
   // const onSubmit = {};
   return (
     <>
