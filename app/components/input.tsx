@@ -9,6 +9,7 @@ interface InputProps {
   labeClassName?: string;
   errorClassName?: string;
 }
+
 const Input: FC<InputProps> = ({
   name,
   label,
